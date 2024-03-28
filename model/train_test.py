@@ -14,16 +14,18 @@ print(f'device: {device}')
 transform = transforms.Compose([
     transforms.ToTensor()
 ])
-    
+
+root_path = '../data'
+
 train_data = datasets.MNIST(
-    root='data',
+    root=root_path,
     train=True,
     transform=transform,
     download=True
 )
 
 test_data = datasets.MNIST(
-    root='data',
+    root=root_path,
     train=False,
     transform=transform,
     download=True
