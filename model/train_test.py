@@ -39,7 +39,7 @@ if __name__ == "__main__":
     model = Net().to(device)
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=1e-3, weight_decay=1e-5)
-    num_epochs = 100
+    num_epochs = 200
 
 
     for epoch in range(num_epochs):

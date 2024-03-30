@@ -36,11 +36,10 @@ def prediction():
         model.eval()
         output = model(img)
         probs = torch.nn.functional.softmax(output, 1)
-        print(probs)
         confidence, prediction = torch.max(probs, 1)
         
         prediction = prediction.item()
-        confidence = f'{confidence.item():.2%}'
+        confidence = f'{confidence.item():.1%}'
 
         return jsonify({
             "prediction": prediction,

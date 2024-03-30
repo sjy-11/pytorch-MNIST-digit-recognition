@@ -1,7 +1,7 @@
 var canvas = new fabric.Canvas('canvas', { isDrawingMode:true, backgroundColor:'black' });
 
 canvas.freeDrawingBrush.color = 'white';
-canvas.freeDrawingBrush.width = 50;
+canvas.freeDrawingBrush.width = 30;
 
 
 
@@ -22,7 +22,9 @@ function sendImageData(imageData) {
         response => response.json()
     ).then(
         data => {
-            document.getElementById('prediction').innerText = `Predicted digit: ${data.prediction}, Confidence: ${data.confidence}`;
+            var confi = parseInt(data.confidence)
+            var textColor = confi >= 75? "success": confi >= 50? "warning": "danger"
+            document.getElementById('prediction').innerHTML = `Predicted digit: <span class="fs-1 fw-bold text-${textColor}">${data.prediction}</span><br>Confidence: <span class="fs-1 fw-bold text-${textColor}">${data.confidence}</span>`;
         }
     ).catch(
         error => {
