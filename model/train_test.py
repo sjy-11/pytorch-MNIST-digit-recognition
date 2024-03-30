@@ -31,15 +31,15 @@ test_data = datasets.MNIST(
     download=True
 )
 
-if __name__ == "main":
+if __name__ == "__main__":
 
     dataloader_train = DataLoader(train_data, shuffle=True, batch_size=100)
     dataloader_test = DataLoader(test_data, shuffle=True, batch_size=100)
 
     model = Net().to(device)
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=1e-3)
-    num_epochs = 20
+    optimizer = optim.Adam(model.parameters(), lr=1e-3, weight_decay=1e-5)
+    num_epochs = 100
 
 
     for epoch in range(num_epochs):

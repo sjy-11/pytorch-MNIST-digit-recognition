@@ -7,7 +7,7 @@ model = Net().to(device)
 model.load_state_dict(torch.load('./model/model_state_dict.pth'))
 model.eval()
 
-data, label = test_data[0]
+data, label = test_data[100]
 
 data = data.unsqueeze(0).to(device)
 output = model(data)

@@ -1,14 +1,17 @@
-var canvas = new fabric.canvas('canvas', { isDrawingMode:true });
+var canvas = new fabric.Canvas('canvas', { isDrawingMode:true, backgroundColor:'black' });
 
-canvas.backgroundColor = 'black';
 canvas.freeDrawingBrush.color = 'white';
-canvas.freeDrawingBrush.width = 10;
+canvas.freeDrawingBrush.width = 50;
+
+
+
 
 function clearCanvas() {
-    canvas.clear();
+    location.reload();
 }
 
 function sendImageData(imageData) {
+    console.log(imageData)
     fetch('/predict', {
         method: 'POST',
         headers: {
@@ -19,7 +22,7 @@ function sendImageData(imageData) {
         response => response.json()
     ).then(
         data => {
-            document.getElementById('prediction').innerText = `Predicted digit: ${data.prediction}`;
+            document.getElementById('prediction').innerText = `Predicted digit: ${data.prediction}, Confidence: ${data.confidence}`;
         }
     ).catch(
         error => {
