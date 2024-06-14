@@ -3,9 +3,6 @@ var canvas = new fabric.Canvas('canvas', { isDrawingMode:true, backgroundColor:'
 canvas.freeDrawingBrush.color = 'white';
 canvas.freeDrawingBrush.width = 30;
 
-
-
-
 function clearCanvas() {
     location.reload();
 }
